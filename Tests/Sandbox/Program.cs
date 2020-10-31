@@ -33,7 +33,7 @@ namespace Sandbox
             {
                 var dbContext = serviceScope.ServiceProvider.GetRequiredService<ApplicationDbContext>();
                 dbContext.Database.Migrate();
-                new ApplicationDbContextSeeder().SeedAsync(dbContext, serviceScope.ServiceProvider).GetAwaiter().GetResult();
+                new ApplicationDbContextSeeder().Seed(dbContext, serviceScope.ServiceProvider);
             }
 
             using (var serviceScope = serviceProvider.CreateScope())

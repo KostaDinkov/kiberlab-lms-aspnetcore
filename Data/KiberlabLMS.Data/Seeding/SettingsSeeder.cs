@@ -1,21 +1,20 @@
-﻿namespace KiberlabLMS.Data.Seeding
+﻿using System;
+using System.Linq;
+using System.Threading.Tasks;
+using KiberlabLMS.Data.Models;
+
+namespace KiberlabLMS.Data.Seeding
 {
-    using System;
-    using System.Linq;
-    using System.Threading.Tasks;
-
-    using KiberlabLMS.Data.Models;
-
     internal class SettingsSeeder : ISeeder
     {
-        public async Task SeedAsync(ApplicationDbContext dbContext, IServiceProvider serviceProvider)
+        public void Seed(ApplicationDbContext dbContext, IServiceProvider serviceProvider)
         {
             if (dbContext.Settings.Any())
             {
                 return;
             }
 
-            await dbContext.Settings.AddAsync(new Setting { Name = "Setting1", Value = "value1" });
+            dbContext.Settings.Add(new Setting { Name = "Setting1", Value = "value1" });
         }
     }
 }

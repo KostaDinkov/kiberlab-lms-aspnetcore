@@ -11,8 +11,8 @@ namespace KiberlabLMS.Data.Models.State
     {
         public CourseInstance()
         {
-            this.ApplicationUsers = new HashSet<ApplicationUser>();
-            this.CourseStates = new HashSet<CourseState>();
+            this.UserProfiles = new HashSet<UserProfile>();
+            //this.CourseStates = new HashSet<CourseState>();
         }
 
         [Required]
@@ -21,12 +21,12 @@ namespace KiberlabLMS.Data.Models.State
         [Required]
         public DateTime EndDate { get; set; }
 
-        public ICollection<ApplicationUser> ApplicationUsers { get; set; }
+        public ICollection<UserProfile> UserProfiles { get; set; }
 
         public Course Course { get; set; }
 
         public string CourseId { get; set; }
 
-        public ICollection<CourseState> CourseStates { get; set; }
+        //public ICollection<CourseState> CourseStates { get; set; }
     }
 }

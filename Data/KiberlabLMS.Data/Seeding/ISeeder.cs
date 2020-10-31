@@ -1,10 +1,9 @@
-﻿namespace KiberlabLMS.Data.Seeding
-{
-    using System;
-    using System.Threading.Tasks;
+﻿using System;
 
+namespace KiberlabLMS.Data.Seeding
+{
     public interface ISeeder
     {
-        Task SeedAsync(ApplicationDbContext dbContext, IServiceProvider serviceProvider);
+        void Seed(ApplicationDbContext dbContext, IServiceProvider serviceProvider);
     }
 }

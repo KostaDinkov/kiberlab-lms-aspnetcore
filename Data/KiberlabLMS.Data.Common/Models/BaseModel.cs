@@ -8,6 +8,7 @@ namespace KiberlabLMS.Data.Common.Models
         protected BaseModel()
         {
             this.Id = Guid.NewGuid().ToString();
+            this.CreatedOn = DateTime.UtcNow;
         }
 
         [Key]

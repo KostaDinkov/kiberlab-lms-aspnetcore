@@ -16,8 +16,8 @@ namespace KiberlabLMS.Data.Models.State
 
         public Section Section { get; set; }
 
-        public string CourseId { get; set; }
+        public string CourseStateId { get; set; }
 
-        public Course Course { get; set; }
+        public CourseState CourseState { get; set; }
     }
 }

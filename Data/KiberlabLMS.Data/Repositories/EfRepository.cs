@@ -1,13 +1,11 @@
-﻿namespace KiberlabLMS.Data.Repositories
+﻿using System;
+using System.Linq;
+using System.Threading.Tasks;
+using KiberlabLMS.Data.Common.Repositories;
+using Microsoft.EntityFrameworkCore;
+
+namespace KiberlabLMS.Data.Repositories
 {
-    using System;
-    using System.Linq;
-    using System.Threading.Tasks;
-
-    using KiberlabLMS.Data.Common.Repositories;
-
-    using Microsoft.EntityFrameworkCore;
-
     public class EfRepository<TEntity> : IRepository<TEntity>
         where TEntity : class
     {

@@ -11,6 +11,7 @@ namespace KiberlabLMS.Data.Models.CourseModels
         {
             this.Units = new HashSet<Unit>();
             this.CourseInstances = new HashSet<CourseInstance>();
+            this.Sections = new HashSet<Section>();
         }
 
         [MaxLength(50)]
@@ -23,13 +24,12 @@ namespace KiberlabLMS.Data.Models.CourseModels
         [Required]
         public string CourseCode { get; set; }
 
-        [Required]
-        public string InstanceCode { get; set; }
-
         public byte[] ImageData { get; set; }
 
         public ICollection<Unit> Units { get; set; }
 
         public ICollection<CourseInstance> CourseInstances { get; set; }
+
+        public ICollection<Section> Sections { get; set; }
     }
 }

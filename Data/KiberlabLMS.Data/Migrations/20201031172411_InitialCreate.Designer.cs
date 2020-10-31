@@ -4,14 +4,16 @@ using KiberlabLMS.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace KiberlabLMS.Data.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20201031172411_InitialCreate")]
+    partial class InitialCreate
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -38,6 +40,10 @@ namespace KiberlabLMS.Data.Migrations
                     b.Property<byte[]>("ImageData")
                         .HasColumnType("varbinary(max)");
 
+                    b.Property<string>("InstanceCode")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<DateTime?>("ModifiedOn")
                         .HasColumnType("datetime2");
 
@@ -58,6 +64,9 @@ namespace KiberlabLMS.Data.Migrations
 
                     b.Property<DateTime>("CreatedOn")
                         .HasColumnType("datetime2");
+
+                    b.Property<string>("HtmlContent")
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<DateTime?>("ModifiedOn")
                         .HasColumnType("datetime2");
@@ -84,9 +93,6 @@ namespace KiberlabLMS.Data.Migrations
                     b.Property<string>("Id")
                         .HasColumnType("nvarchar(450)");
 
-                    b.Property<string>("CourseId")
-                        .HasColumnType("nvarchar(450)");
-
                     b.Property<DateTime>("CreatedOn")
                         .HasColumnType("datetime2");
 
@@ -104,8 +110,6 @@ namespace KiberlabLMS.Data.Migrations
                         .HasColumnType("float");
 
                     b.HasKey("Id");
-
-                    b.HasIndex("CourseId");
 
                     b.HasIndex("LessonId");
 
@@ -419,7 +423,7 @@ namespace KiberlabLMS.Data.Migrations
 
                     b.HasIndex("CourseInstanceId");
 
-                    b.ToTable("UserProfiles");
+                    b.ToTable("UserProfile");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>
@@ -579,10 +583,6 @@ namespace KiberlabLMS.Data.Migrations
 
             modelBuilder.Entity("KiberlabLMS.Data.Models.CourseModels.Section", b =>
                 {
-                    b.HasOne("KiberlabLMS.Data.Models.CourseModels.Course", null)
-                        .WithMany("Sections")
-                        .HasForeignKey("CourseId");
-
                     b.HasOne("KiberlabLMS.Data.Models.CourseModels.Lesson", "Lesson")
                         .WithMany("Sections")
                         .HasForeignKey("LessonId");

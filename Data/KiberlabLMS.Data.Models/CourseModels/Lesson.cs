@@ -14,8 +14,6 @@ namespace KiberlabLMS.Data.Models.CourseModels
         [MaxLength(50)]
         public string Name { get; set; }
 
-        public string HtmlContent { get; set; }
-
         /// <summary>
         /// Gets or sets the order position of the Lesson in the Unit.
         /// </summary>

@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Dynamic;
 using System.Linq;
 using System.Net.Mime;
 using System.Reflection;
@@ -45,6 +46,10 @@ namespace KiberlabLMS.Data
         public DbSet<CourseState> CourseStates { get; set; }
 
         public DbSet<SectionState> SectionStates { get; set; }
+
+        public DbSet<CourseInstance> CourseInstances { get; set; }
+
+        public DbSet<UserProfile> UserProfiles { get; set; }
 
         public override int SaveChanges() => this.SaveChanges(true);
 

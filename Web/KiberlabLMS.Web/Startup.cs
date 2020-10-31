@@ -75,7 +75,7 @@ namespace KiberlabLMS.Web
             {
                 var dbContext = serviceScope.ServiceProvider.GetRequiredService<ApplicationDbContext>();
                 dbContext.Database.Migrate();
-                new ApplicationDbContextSeeder().SeedAsync(dbContext, serviceScope.ServiceProvider).GetAwaiter().GetResult();
+                new ApplicationDbContextSeeder().Seed(dbContext, serviceScope.ServiceProvider);
             }
 
             if (env.IsDevelopment())

@@ -1,12 +1,11 @@
-﻿namespace KiberlabLMS.Services.Data
+﻿using System.Collections.Generic;
+using System.Linq;
+using KiberlabLMS.Data.Common.Repositories;
+using KiberlabLMS.Data.Models;
+using KiberlabLMS.Services.Mapping;
+
+namespace KiberlabLMS.Services.Data
 {
-    using System.Collections.Generic;
-    using System.Linq;
-
-    using KiberlabLMS.Data.Common.Repositories;
-    using KiberlabLMS.Data.Models;
-    using KiberlabLMS.Services.Mapping;
-
     public class SettingsService : ISettingsService
     {
         private readonly IDeletableEntityRepository<Setting> settingsRepository;

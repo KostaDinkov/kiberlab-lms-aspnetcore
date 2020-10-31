@@ -1,15 +1,14 @@
-﻿namespace KiberlabLMS.Data.Seeding
+﻿using System;
+using System.Collections.Generic;
+using System.Threading.Tasks;
+using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.Logging;
+
+namespace KiberlabLMS.Data.Seeding
 {
-    using System;
-    using System.Collections.Generic;
-    using System.Threading.Tasks;
-
-    using Microsoft.Extensions.DependencyInjection;
-    using Microsoft.Extensions.Logging;
-
     public class ApplicationDbContextSeeder : ISeeder
     {
-        public async Task SeedAsync(ApplicationDbContext dbContext, IServiceProvider serviceProvider)
+        public void Seed(ApplicationDbContext dbContext, IServiceProvider serviceProvider)
         {
             if (dbContext == null)
             {
@@ -27,12 +26,15 @@
                           {
                               new RolesSeeder(),
                               new SettingsSeeder(),
+                              new CourseSeeder(),
+                              new UserSeeder(),
+                              new EnrollmentSeeder(),
                           };
 
             foreach (var seeder in seeders)
             {
-                await seeder.SeedAsync(dbContext, serviceProvider);
-                await dbContext.SaveChangesAsync();
+                seeder.Seed(dbContext, serviceProvider);
+                dbContext.SaveChanges();
                 logger.LogInformation($"Seeder {seeder.GetType().Name} done.");
             }
         }
