@@ -1,9 +1,10 @@
-﻿namespace KiberlabLMS.Data.Configurations
-{
-    using KiberlabLMS.Data.Models;
-    using Microsoft.EntityFrameworkCore;
-    using Microsoft.EntityFrameworkCore.Metadata.Builders;
+﻿using KiberlabLMS.Data.Models;
+using KiberlabLMS.Data.Models.User;
+using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
+namespace KiberlabLMS.Data.Configurations
+{
     public class ApplicationUserConfiguration : IEntityTypeConfiguration<ApplicationUser>
     {
         public void Configure(EntityTypeBuilder<ApplicationUser> appUser)

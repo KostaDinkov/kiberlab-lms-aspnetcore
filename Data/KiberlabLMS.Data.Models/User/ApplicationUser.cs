@@ -1,13 +1,12 @@
 ﻿// ReSharper disable VirtualMemberCallInConstructor
-namespace KiberlabLMS.Data.Models
+
+using System;
+using System.Collections.Generic;
+using KiberlabLMS.Data.Common.Models;
+using Microsoft.AspNetCore.Identity;
+
+namespace KiberlabLMS.Data.Models.User
 {
-    using System;
-    using System.Collections.Generic;
-
-    using KiberlabLMS.Data.Common.Models;
-
-    using Microsoft.AspNetCore.Identity;
-
     public class ApplicationUser : IdentityUser, IAuditInfo, IDeletableEntity
     {
         public ApplicationUser()
@@ -33,5 +32,7 @@ namespace KiberlabLMS.Data.Models
         public virtual ICollection<IdentityUserClaim<string>> Claims { get; set; }
 
         public virtual ICollection<IdentityUserLogin<string>> Logins { get; set; }
+
+        public UserProfile UserProfile { get; set; }
     }
 }

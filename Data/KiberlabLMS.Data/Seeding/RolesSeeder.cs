@@ -1,15 +1,14 @@
-﻿namespace KiberlabLMS.Data.Seeding
+﻿using System;
+using System.Linq;
+using System.Threading.Tasks;
+using KiberlabLMS.Common;
+using KiberlabLMS.Data.Models;
+using KiberlabLMS.Data.Models.User;
+using Microsoft.AspNetCore.Identity;
+using Microsoft.Extensions.DependencyInjection;
+
+namespace KiberlabLMS.Data.Seeding
 {
-    using System;
-    using System.Linq;
-    using System.Threading.Tasks;
-
-    using KiberlabLMS.Common;
-    using KiberlabLMS.Data.Models;
-
-    using Microsoft.AspNetCore.Identity;
-    using Microsoft.Extensions.DependencyInjection;
-
     internal class RolesSeeder : ISeeder
     {
         public async Task SeedAsync(ApplicationDbContext dbContext, IServiceProvider serviceProvider)

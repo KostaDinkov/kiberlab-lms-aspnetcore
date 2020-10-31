@@ -1,17 +1,19 @@
-﻿namespace KiberlabLMS.Data
+﻿using System;
+using System.Linq;
+using System.Net.Mime;
+using System.Reflection;
+using System.Threading;
+using System.Threading.Tasks;
+using KiberlabLMS.Data.Common.Models;
+using KiberlabLMS.Data.Models;
+using KiberlabLMS.Data.Models.CourseModels;
+using KiberlabLMS.Data.Models.State;
+using KiberlabLMS.Data.Models.User;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore;
+
+namespace KiberlabLMS.Data
 {
-    using System;
-    using System.Linq;
-    using System.Reflection;
-    using System.Threading;
-    using System.Threading.Tasks;
-
-    using KiberlabLMS.Data.Common.Models;
-    using KiberlabLMS.Data.Models;
-
-    using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
-    using Microsoft.EntityFrameworkCore;
-
     public class ApplicationDbContext : IdentityDbContext<ApplicationUser, ApplicationRole, string>
     {
         private static readonly MethodInfo SetIsDeletedQueryFilterMethod =
@@ -25,6 +27,24 @@
         }
 
         public DbSet<Setting> Settings { get; set; }
+
+        public DbSet<Course> Courses { get; set; }
+
+        public DbSet<Lesson> Lessons { get; set; }
+
+        public DbSet<Unit> Units { get; set; }
+
+        public DbSet<VideoSection> VideoSections { get; set; }
+
+        public DbSet<LabSection> LabSections { get; set; }
+
+        public DbSet<TextSection> TextSections { get; set; }
+
+        public DbSet<QuizSection> QuizSections { get; set; }
+
+        public DbSet<CourseState> CourseStates { get; set; }
+
+        public DbSet<SectionState> SectionStates { get; set; }
 
         public override int SaveChanges() => this.SaveChanges(true);
 

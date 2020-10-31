@@ -1,26 +1,24 @@
-﻿namespace Sandbox
+﻿using System;
+using System.Diagnostics;
+using System.IO;
+using System.Threading.Tasks;
+using CommandLine;
+using KiberlabLMS.Data;
+using KiberlabLMS.Data.Common;
+using KiberlabLMS.Data.Common.Repositories;
+using KiberlabLMS.Data.Models;
+using KiberlabLMS.Data.Models.User;
+using KiberlabLMS.Data.Repositories;
+using KiberlabLMS.Data.Seeding;
+using KiberlabLMS.Services.Data;
+using KiberlabLMS.Services.Messaging;
+using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Configuration;
+using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.Logging;
+
+namespace Sandbox
 {
-    using System;
-    using System.Diagnostics;
-    using System.IO;
-    using System.Threading.Tasks;
-
-    using KiberlabLMS.Data;
-    using KiberlabLMS.Data.Common;
-    using KiberlabLMS.Data.Common.Repositories;
-    using KiberlabLMS.Data.Models;
-    using KiberlabLMS.Data.Repositories;
-    using KiberlabLMS.Data.Seeding;
-    using KiberlabLMS.Services.Data;
-    using KiberlabLMS.Services.Messaging;
-
-    using CommandLine;
-
-    using Microsoft.EntityFrameworkCore;
-    using Microsoft.Extensions.Configuration;
-    using Microsoft.Extensions.DependencyInjection;
-    using Microsoft.Extensions.Logging;
-
     public static class Program
     {
         public static int Main(string[] args)

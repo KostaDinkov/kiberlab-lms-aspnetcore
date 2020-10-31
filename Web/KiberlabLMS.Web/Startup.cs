@@ -1,27 +1,26 @@
-﻿namespace KiberlabLMS.Web
+﻿using System.Reflection;
+using KiberlabLMS.Data;
+using KiberlabLMS.Data.Common;
+using KiberlabLMS.Data.Common.Repositories;
+using KiberlabLMS.Data.Models;
+using KiberlabLMS.Data.Models.User;
+using KiberlabLMS.Data.Repositories;
+using KiberlabLMS.Data.Seeding;
+using KiberlabLMS.Services.Data;
+using KiberlabLMS.Services.Mapping;
+using KiberlabLMS.Services.Messaging;
+using KiberlabLMS.Web.ViewModels;
+using Microsoft.AspNetCore.Builder;
+using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Configuration;
+using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.Hosting;
+
+namespace KiberlabLMS.Web
 {
-    using System.Reflection;
-
-    using KiberlabLMS.Data;
-    using KiberlabLMS.Data.Common;
-    using KiberlabLMS.Data.Common.Repositories;
-    using KiberlabLMS.Data.Models;
-    using KiberlabLMS.Data.Repositories;
-    using KiberlabLMS.Data.Seeding;
-    using KiberlabLMS.Services.Data;
-    using KiberlabLMS.Services.Mapping;
-    using KiberlabLMS.Services.Messaging;
-    using KiberlabLMS.Web.ViewModels;
-
-    using Microsoft.AspNetCore.Builder;
-    using Microsoft.AspNetCore.Hosting;
-    using Microsoft.AspNetCore.Http;
-    using Microsoft.AspNetCore.Mvc;
-    using Microsoft.EntityFrameworkCore;
-    using Microsoft.Extensions.Configuration;
-    using Microsoft.Extensions.DependencyInjection;
-    using Microsoft.Extensions.Hosting;
-
     public class Startup
     {
         private readonly IConfiguration configuration;

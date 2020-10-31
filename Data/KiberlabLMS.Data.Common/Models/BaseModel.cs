@@ -1,12 +1,17 @@
-﻿namespace KiberlabLMS.Data.Common.Models
-{
-    using System;
-    using System.ComponentModel.DataAnnotations;
+﻿using System;
+using System.ComponentModel.DataAnnotations;
 
-    public abstract class BaseModel<TKey> : IAuditInfo
+namespace KiberlabLMS.Data.Common.Models
+{
+    public abstract class BaseModel : IAuditInfo
     {
+        protected BaseModel()
+        {
+            this.Id = Guid.NewGuid().ToString();
+        }
+
         [Key]
-        public TKey Id { get; set; }
+        public string Id { get; set; }
 
         public DateTime CreatedOn { get; set; }
 
