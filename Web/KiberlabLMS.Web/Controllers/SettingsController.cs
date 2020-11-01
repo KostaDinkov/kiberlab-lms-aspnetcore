@@ -1,15 +1,13 @@
-﻿namespace KiberlabLMS.Web.Controllers
+﻿using System;
+using System.Threading.Tasks;
+using KiberlabLMS.Data.Common.Repositories;
+using KiberlabLMS.Data.Models;
+using KiberlabLMS.Services.Data;
+using KiberlabLMS.Web.ViewModels.Settings;
+using Microsoft.AspNetCore.Mvc;
+
+namespace KiberlabLMS.Web.Controllers
 {
-    using System;
-    using System.Threading.Tasks;
-
-    using KiberlabLMS.Data.Common.Repositories;
-    using KiberlabLMS.Data.Models;
-    using KiberlabLMS.Services.Data;
-    using KiberlabLMS.Web.ViewModels.Settings;
-
-    using Microsoft.AspNetCore.Mvc;
-
     public class SettingsController : BaseController
     {
         private readonly ISettingsService settingsService;

@@ -1,0 +1,15 @@
+﻿@model List<KiberlabLMS.Web.ViewModels.Courses.CourseViewModel>
+
+@{
+    this.ViewData["Title"] = "Courses";
+}
+
+<h1>@this.ViewData["Title"]</h1>
+
+@foreach (var course in this.Model)
+{
+    <div>@course.CourseCode: @course.Name</div>
+    <div>Description: @course.Description</div>
+}
+
+
