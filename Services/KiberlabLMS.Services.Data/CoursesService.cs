@@ -21,5 +21,10 @@ namespace KiberlabLMS.Services.Data
         {
             return this.coursesRepository.All().To<T>().ToList();
         }
+
+        public T GetById<T>(string id)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

@@ -8,7 +8,10 @@
 
 @foreach (var course in this.Model)
 {
-    <div>@course.CourseCode: @course.Name</div>
+    <div>@course.CourseCode: <a asp-controller="Courses" 
+                                asp-action="Details"
+                                asp-route-id = "@course.Id">@course.Name</a>
+    </div>
     <div>Description: @course.Description</div>
 }
 

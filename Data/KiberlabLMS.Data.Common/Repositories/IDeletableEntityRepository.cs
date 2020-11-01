@@ -1,10 +1,9 @@
-﻿namespace KiberlabLMS.Data.Common.Repositories
+﻿using System.Linq;
+using System.Threading.Tasks;
+using KiberlabLMS.Data.Common.Models;
+
+namespace KiberlabLMS.Data.Common.Repositories
 {
-    using System.Linq;
-    using System.Threading.Tasks;
-
-    using KiberlabLMS.Data.Common.Models;
-
     public interface IDeletableEntityRepository<TEntity> : IRepository<TEntity>
         where TEntity : class, IDeletableEntity
     {

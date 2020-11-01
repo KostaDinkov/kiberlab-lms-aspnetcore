@@ -27,8 +27,12 @@ namespace KiberlabLMS.Web.Controllers
         public IActionResult Index()
         {
             var model = this.coursesService.GetAll<CourseViewModel>().ToList();
-            
             return this.View(model);
+        }
+
+        public IActionResult Details(string id)
+        {
+            throw new NotImplementedException();
         }
 
         
