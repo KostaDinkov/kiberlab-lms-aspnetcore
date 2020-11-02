@@ -1,18 +1,15 @@
 ﻿using System.Collections.Generic;
-using KiberlabLMS.Models.State;
+using KiberlabLMS.Models.User;
 
-namespace KiberlabLMS.Models.User
+namespace KiberlabLMS.Models.State
 {
-    public class UserProfile : BaseModel
+    public class UserProgress : BaseModel
     {
-        public UserProfile()
+        public UserProgress()
         {
             this.CourseStates = new HashSet<CourseState>();
         }
-
-        public string FirstName { get; set; }
-
-        public string LastName { get; set; }
+        
 
         public string ApplicationUserId { get; set; }
 

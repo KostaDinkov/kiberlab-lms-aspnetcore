@@ -1,9 +1,10 @@
 ﻿using System;
 using System.ComponentModel.DataAnnotations;
+using KiberlabLMS.Models.Shared;
 
 namespace KiberlabLMS.Models
 {
-    public abstract class BaseModel 
+    public abstract class BaseModel : IAuditInfo
     {
         protected BaseModel()
         {

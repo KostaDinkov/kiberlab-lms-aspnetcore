@@ -6,6 +6,7 @@ using KiberlabLMS.Data.Common.Repositories;
 using KiberlabLMS.Data.Models;
 using KiberlabLMS.Data.Models.CourseModels;
 using KiberlabLMS.Services.Data;
+using KiberlabLMS.Services.Mapping;
 using KiberlabLMS.Web.ViewModels.Courses;
 using KiberlabLMS.Web.ViewModels.Settings;
 using Microsoft.AspNetCore.Mvc;
@@ -26,13 +27,14 @@ namespace KiberlabLMS.Web.Controllers
 
         public IActionResult Index()
         {
-            var model = this.coursesService.GetAll<CourseViewModel>().ToList();
+            var model = this.coursesService.GetAll().To<CourseViewModel>().ToList();
             return this.View(model);
         }
 
         public IActionResult Details(string id)
         {
-            throw new NotImplementedException();
+            var model = this.coursesService.GetById(id);
+
         }
 
         

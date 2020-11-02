@@ -14,8 +14,8 @@ namespace KiberlabLMS.Models.CourseModels
         [Required]
         public double Position { get; set; }
 
-        public Course Course { get; set; }
+        //public Course Course { get; set; }
 
-        public string CourseId { get; set; }
+        //public string CourseId { get; set; }
     }
 }

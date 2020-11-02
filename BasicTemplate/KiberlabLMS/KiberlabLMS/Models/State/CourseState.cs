@@ -14,9 +14,9 @@ namespace KiberlabLMS.Models.State
 
         public string CourseInstanceId { get; set; }
 
-        public UserProfile UserProfile { get; set; }
+        public UserProgress UserProgress { get; set; }
 
-        public string UserProfileId { get; set; }
+        public string UserProgressId { get; set; }
 
         public ICollection<SectionState> SectionStates { get; set; }
     }

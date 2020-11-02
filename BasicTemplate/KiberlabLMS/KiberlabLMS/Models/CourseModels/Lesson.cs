@@ -18,9 +18,11 @@ namespace KiberlabLMS.Models.CourseModels
         /// </summary>
         public double Position { get; set; }
 
-        public string UnitId { get; set; }
+        public string Description { get; set; }
 
-        public Unit Unit { get; set; }
+        public string CourseId{ get; set; }
+
+        public Course Course { get; set; }
 
         public ICollection<Section> Sections { get; set; }
     }

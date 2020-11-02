@@ -2,6 +2,7 @@
 
 using System;
 using System.Collections.Generic;
+using KiberlabLMS.Models.State;
 using Microsoft.AspNetCore.Identity;
 
 namespace KiberlabLMS.Models.User
@@ -20,9 +21,13 @@ namespace KiberlabLMS.Models.User
         public DateTime CreatedOn { get; set; }
 
         public DateTime? ModifiedOn { get; set; }
-
         
         public DateTime? DeletedOn { get; set; }
+        public UserProgress UserProgress { get; set; }
+
+        public string FirstName { get; set; }
+
+        public string LastName { get; set; }
 
         public virtual ICollection<IdentityUserRole<string>> Roles { get; set; }
 
@@ -30,6 +35,6 @@ namespace KiberlabLMS.Models.User
 
         public virtual ICollection<IdentityUserLogin<string>> Logins { get; set; }
 
-        public UserProfile UserProfile { get; set; }
+        
     }
 }

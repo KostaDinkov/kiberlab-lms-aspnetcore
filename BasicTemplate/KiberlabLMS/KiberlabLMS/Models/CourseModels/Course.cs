@@ -8,9 +8,9 @@ namespace KiberlabLMS.Models.CourseModels
     {
         public Course()
         {
-            this.Units = new HashSet<Unit>();
+            this.Lessons = new HashSet<Lesson>();
             this.CourseInstances = new HashSet<CourseInstance>();
-            this.Sections = new HashSet<Section>();
+            //this.Sections = new HashSet<Section>();
         }
 
         [MaxLength(50)]
@@ -25,10 +25,10 @@ namespace KiberlabLMS.Models.CourseModels
 
         public byte[] ImageData { get; set; }
 
-        public ICollection<Unit> Units { get; set; }
+        public ICollection<Lesson> Lessons { get; set; }
 
         public ICollection<CourseInstance> CourseInstances { get; set; }
 
-        public ICollection<Section> Sections { get; set; }
+        //public ICollection<Section> Sections { get; set; }
     }
 }

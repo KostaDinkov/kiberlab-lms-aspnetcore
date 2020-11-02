@@ -12,19 +12,19 @@ namespace KiberlabLMS.Services.Data
     {
         private readonly IRepository<Course> coursesRepository;
 
-        public CoursesService(IRepository<Course> coursesRepository)
+        public CoursesService(CourseRepository coursesRepository)
         {
             this.coursesRepository = coursesRepository;
         }
 
-        public IEnumerable<T> GetAll<T>()
+        public IQueryable<Course> GetAll()
         {
-            return this.coursesRepository.All().To<T>().ToList();
+            return this.coursesRepository.All();
         }
 
-        public T GetById<T>(string id)
+        public Course GetById(string id)
         {
-            throw new NotImplementedException();
+            return this.coursesRepository.GetById(id);
         }
     }
 }
