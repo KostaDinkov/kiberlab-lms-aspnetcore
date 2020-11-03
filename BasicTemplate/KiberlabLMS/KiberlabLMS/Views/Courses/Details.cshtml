@@ -1,4 +1,5 @@
-﻿@model KiberlabLMS.Models.CourseModels.Course
+﻿@using KiberlabLMS.ViewModels.Course
+@model KiberlabLMS.Models.CourseModels.Course
 
 @{
     ViewData["Title"] = "Details";
@@ -48,20 +49,7 @@
         </dd>
     </dl>
     <h2>Lessons: </h2>
-    <ul>
-        @if (Model.Lessons.Count == 0)
-        {
-            <li>No lessons</li>
-        }
-        else
-        {
-            foreach (var lesson in Model.Lessons)
-            {
-                <li>Lesson: @lesson.Name</li>
-            }
-        }
-        
-    </ul>
+    <partial name="_LessonsList" model="@new CourseLessonsViewModel{Course = Model, CourseId = Model.Id, Lessons = Model.Lessons.OrderBy(lesson => lesson.Position).ToList()}"/>
 
 
 </div>

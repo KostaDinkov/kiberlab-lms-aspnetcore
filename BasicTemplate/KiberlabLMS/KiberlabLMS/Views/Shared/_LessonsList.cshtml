@@ -1,0 +1,59 @@
+﻿@model KiberlabLMS.ViewModels.Course.CourseLessonsViewModel
+
+<p>
+    <a asp-controller="Lessons" asp-action="Create" asp-route-courseId="@Model.CourseId">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Lessons.FirstOrDefault().Name  )
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Lessons.FirstOrDefault().Position)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Lessons.FirstOrDefault().Description)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Lessons.FirstOrDefault().Course)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Lessons.FirstOrDefault().CreatedOn)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Lessons.FirstOrDefault().ModifiedOn)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model.Lessons) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Position)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Description)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Course.Name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CreatedOn)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ModifiedOn)
+            </td>
+            <td>
+                <a asp-controller="Lessons" asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
+                <a asp-controller="Lessons" asp-action="Details" asp-route-id="@item.Id">Details</a> |
+                <a asp-controller="Lessons" asp-action="Delete" asp-route-id="@item.Id">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
