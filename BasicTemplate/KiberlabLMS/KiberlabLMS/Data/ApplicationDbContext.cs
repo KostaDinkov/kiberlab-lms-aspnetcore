@@ -10,6 +10,7 @@ using KiberlabLMS.Models.State;
 using KiberlabLMS.Models.User;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
+using KiberlabLMS.ViewModels.Lesson;
 
 namespace KiberlabLMS.Data
 {
@@ -87,5 +88,7 @@ namespace KiberlabLMS.Data
         public DbSet<CourseInstance> CourseInstances { get; set; }
 
         public DbSet<UserProgress> UserProgresses { get; set; }
+
+        public DbSet<KiberlabLMS.ViewModels.Lesson.LessonViewModel> LessonViewModel { get; set; }
     }
 }

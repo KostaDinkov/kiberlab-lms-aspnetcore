@@ -1,11 +1,12 @@
 ﻿@model KiberlabLMS.ViewModels.Lesson.LessonViewModel
 
-<h4>Lesson</h4>
+<h4>LessonViewModel</h4>
 <hr />
 <div class="row">
     <div class="col-md-4">
-        <form asp-action="Create" asp-route-courseId="@ViewData["courseId"]">
+        <form asp-action="Edit">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="Id" value="@Model.Id"/>
             <div class="form-group">
                 <label asp-for="Name" class="control-label"></label>
                 <input asp-for="Name" class="form-control" />
@@ -21,17 +22,20 @@
                 <input asp-for="Description" class="form-control" />
                 <span asp-validation-for="Description" class="text-danger"></span>
             </div>
-            
-            
             <div class="form-group">
-                <input type="submit" value="Create" class="btn btn-primary" />
+                <label asp-for="CourseId" class="control-label"></label>
+                <input asp-for="CourseId" class="form-control" />
+                <span asp-validation-for="CourseId" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Save" class="btn btn-primary" />
             </div>
         </form>
     </div>
 </div>
 
 <div>
-    <a asp-controller="Courses" asp-action="Details" asp-route-courseId="@ViewData["courseId"]">Back to List</a>
+    <a asp-controller ="Courses" asp-action="Details" asp-route-id="@Model.CourseId">Back to List</a>
 </div>
 
 @section Scripts {

@@ -2,13 +2,16 @@
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
+using System.Security.AccessControl;
 using System.Threading.Tasks;
 using KiberlabLMS.Models.CourseModels;
 
 namespace KiberlabLMS.ViewModels.Lesson
 {
-    public class CreateLessonViewModel
+    public class LessonViewModel
     {
+        public string Id { get; set; }
+        
         [MaxLength(50)]
         public string Name { get; set; }
 
