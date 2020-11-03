@@ -1,5 +1,4 @@
-﻿@using KiberlabLMS.ViewModels.Course
-@model KiberlabLMS.Models.CourseModels.Course
+﻿@model KiberlabLMS.Models.CourseModels.Course
 
 @{
     ViewData["Title"] = "Details";
@@ -49,9 +48,7 @@
         </dd>
     </dl>
     <h2>Lessons: </h2>
-    <partial name="_LessonsList" model="@new CourseLessonsViewModel{Course = Model, CourseId = Model.Id, Lessons = Model.Lessons.OrderBy(lesson => lesson.Position).ToList()}"/>
-
-
+    <vc:lessons-list course ="@Model"></vc:lessons-list>
 </div>
 <div>
     <a asp-action="Edit" asp-route-id="@Model.Id">Edit</a> |
