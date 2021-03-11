@@ -28,7 +28,7 @@ namespace KiberlabLMS.Models.CourseModels
         
         
 
-        public string ImageFileName { get; set; }
+        public string ImageFilePath { get; set; }
 
         public ICollection<Lesson> Lessons { get; set; }
 

@@ -79,7 +79,7 @@ namespace KiberlabLMS.Controllers
                     var uniqueFileName = Utils.Utils.GetUniqueFileName(input.Image.FileName);
                     var filePath = Path.Combine(uploadPath, uniqueFileName);
                     
-                    course.ImageFileName = Path.Combine("uploads", input.CourseCode, uniqueFileName);
+                    course.ImageFilePath = Path.Combine("uploads", input.CourseCode, uniqueFileName);
                     
                     //todo catch exception
                     var newFile = new FileStream(filePath, FileMode.Create);
