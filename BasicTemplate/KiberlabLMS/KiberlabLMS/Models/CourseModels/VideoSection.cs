@@ -6,5 +6,9 @@ namespace KiberlabLMS.Models.CourseModels
     {
         [Required]
         public string VideoUrl { get; set; }
+        [Required]
+        public string Title { get; set; }
+        
+        public string Description { get; set; }
     }
 }
