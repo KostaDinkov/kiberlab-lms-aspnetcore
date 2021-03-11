@@ -2,6 +2,7 @@
 
 using System.ComponentModel.DataAnnotations;
 using System.Security.AccessControl;
+using Microsoft.AspNetCore.Http;
 
 namespace KiberlabLMS.ViewModels.Course
 {
@@ -19,5 +20,8 @@ namespace KiberlabLMS.ViewModels.Course
 
         [Required]
         public string CourseCode { get; set; }
+
+        
+        public IFormFile Image { get; set; }
     }
 }

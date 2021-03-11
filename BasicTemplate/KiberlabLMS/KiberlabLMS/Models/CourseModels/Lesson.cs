@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using KiberlabLMS.Models.Shared;
 
 namespace KiberlabLMS.Models.CourseModels
 {

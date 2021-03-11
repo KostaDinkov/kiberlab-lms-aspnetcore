@@ -1,4 +1,5 @@
 ﻿using System.ComponentModel.DataAnnotations;
+using KiberlabLMS.Models.Shared;
 using KiberlabLMS.Models.State;
 
 namespace KiberlabLMS.Models.CourseModels

@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using KiberlabLMS.Models.Shared;
 using KiberlabLMS.Models.User;
 
 namespace KiberlabLMS.Models.State

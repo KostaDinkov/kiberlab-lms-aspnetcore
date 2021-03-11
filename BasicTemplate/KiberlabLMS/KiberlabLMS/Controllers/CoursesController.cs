@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
@@ -8,15 +9,20 @@ using Microsoft.EntityFrameworkCore;
 using KiberlabLMS.Data;
 using KiberlabLMS.Models.CourseModels;
 using KiberlabLMS.ViewModels.Course;
+using Microsoft.AspNetCore.Hosting;
+using Newtonsoft.Json;
+
 
 namespace KiberlabLMS.Controllers
 {
     public class CoursesController : Controller
     {
         private readonly ApplicationDbContext _context;
+        private readonly IWebHostEnvironment environment;
 
-        public CoursesController(ApplicationDbContext context)
+        public CoursesController(ApplicationDbContext context, IWebHostEnvironment environment)
         {
+            this.environment = environment;
             _context = context;
         }
 
@@ -65,6 +71,23 @@ namespace KiberlabLMS.Controllers
                     Description = input.Description,
                     CourseCode = input.CourseCode
                 };
+                if (input.Image != null)
+                {
+                    var img = input.Image;
+                    var uploadPath = Path.Combine(this.environment.WebRootPath, "uploads", input.CourseCode);
+                    Directory.CreateDirectory(uploadPath);
+                    var uniqueFileName = Utils.Utils.GetUniqueFileName(input.Image.FileName);
+                    var filePath = Path.Combine(uploadPath, uniqueFileName);
+                    
+                    course.ImageFileName = Path.Combine("uploads", input.CourseCode, uniqueFileName);
+                    
+                    //todo catch exception
+                    var newFile = new FileStream(filePath, FileMode.Create);
+                    await img.CopyToAsync(newFile);
+                    newFile.Close();
+
+                }
+
                 _context.Add(course);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));

@@ -1,5 +1,6 @@
 ﻿using System;
 using KiberlabLMS.Models.CourseModels;
+using KiberlabLMS.Models.Shared;
 
 namespace KiberlabLMS.Models.State
 {
