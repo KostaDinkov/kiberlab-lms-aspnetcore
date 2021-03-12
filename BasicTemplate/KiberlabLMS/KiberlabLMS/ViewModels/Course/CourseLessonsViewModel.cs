@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Security.AccessControl;
-using System.Threading.Tasks;
-using KiberlabLMS.Models.CourseModels;
+﻿using System.Collections.Generic;
 
 namespace KiberlabLMS.ViewModels.Course
 {

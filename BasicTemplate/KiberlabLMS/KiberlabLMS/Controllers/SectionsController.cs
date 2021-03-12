@@ -9,23 +9,25 @@ using KiberlabLMS.ViewModels.Sections;
 
 namespace KiberlabLMS.Controllers
 {
-    public class VideoSectionsController : Controller
+    public class SectionsController : Controller
     {
         private readonly ApplicationDbContext context;
 
-        public VideoSectionsController(ApplicationDbContext context )
+        public SectionsController(ApplicationDbContext context)
         {
             this.context = context;
         }
-        public IActionResult Create(string lessonId)
+
+        public IActionResult Create(string lessonId, SectionType sectionType)
         {
             this.ViewData["lessonId"] = lessonId;
+            this.ViewData["sectionType"] = sectionType;
             return this.View();
         }
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create(VideoSectionViewModel model)
+        public async Task<IActionResult> CreateVideoSection(VideoSectionViewModel model)
         {
             if (this.ModelState.IsValid)
             {
@@ -33,17 +35,15 @@ namespace KiberlabLMS.Controllers
                 {
                     VideoUrl = model.VideoUrl,
                     Position = model.Position,
-                    Title = model.Title,
+                    Name = model.Name,
                     Description = model.Description,
                     LessonId = model.LessonId
                 };
                 context.Add(videoSection);
                 await context.SaveChangesAsync();
-
-                return this.RedirectToAction("Details", "Lessons", new { id = model.LessonId });
             }
 
-            throw new NotFiniteNumberException();
+            return this.RedirectToAction("Details", "Lessons", new {id = model.LessonId});
         }
     }
 }

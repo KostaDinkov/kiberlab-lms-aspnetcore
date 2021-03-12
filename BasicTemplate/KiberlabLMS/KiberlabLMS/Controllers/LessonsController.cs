@@ -54,7 +54,10 @@ namespace KiberlabLMS.Controllers
 
         public IActionResult Details(string id)
         {
-            var model = this._context.Lessons.Include(l => l.Course).FirstOrDefault(lesson => lesson.Id == id);
+            var model = this._context.Lessons
+                .Include(l => l.Course)
+                .Include(l=>l.Sections)
+                .FirstOrDefault(lesson => lesson.Id == id);
             
             return this.View(model);
         }

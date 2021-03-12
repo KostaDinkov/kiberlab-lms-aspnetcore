@@ -1,4 +1,5 @@
-﻿@model KiberlabLMS.Models.CourseModels.Lesson
+﻿@using KiberlabLMS.Models.CourseModels
+@model KiberlabLMS.Models.CourseModels.Lesson
 
 <div>
     <h4>Lesson</h4>
@@ -43,7 +44,17 @@
         </dd>
     </dl>
 </div>
-<a asp-controller="VideoSections" asp-action="Create" asp-route-lessonId="@Model.Id">Create New</a>
+<a asp-controller="Sections" asp-action="Create" asp-route-lessonId="@Model.Id" asp-route-sectionType="@SectionType.VideoSection">Create New</a>
+
+<div>
+    <ul>
+        
+        @foreach (var section in Model.Sections)
+        {
+        <a href="#"><li>@Html.DisplayFor(sectionItem => section.Name)</li></a>
+        }
+    </ul>
+</div>
 <div>
     <a asp-action="Edit" asp-route-id="@Model.Id">Edit</a> |
     <a asp-controller="Courses" asp-action="Details" asp-route-id ="@Model.CourseId">Back to List</a>

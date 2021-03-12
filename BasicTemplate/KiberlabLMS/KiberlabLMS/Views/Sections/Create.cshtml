@@ -1,0 +1,17 @@
+﻿@using KiberlabLMS.Models.CourseModels
+
+@switch (ViewData["sectionType"])
+    {
+        case SectionType.VideoSection:
+            <vc:video-section-vc></vc:video-section-vc>
+            break;
+    }
+
+
+<div>
+    <a asp-controller="Lessons" asp-action="Details" asp-route-id="@ViewData["lessonId"]">Back to lesson</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

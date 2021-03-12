@@ -8,6 +8,8 @@ namespace KiberlabLMS.Models.CourseModels
     {
         public Lesson Lesson { get; set; }
 
+        public SectionType SectionType {get; set; }
+
         public string LessonId { get; set; }
 
         public SectionState SectionState { get; set; }
@@ -15,8 +17,9 @@ namespace KiberlabLMS.Models.CourseModels
         [Required]
         public double Position { get; set; }
 
-        //public Course Course { get; set; }
+        [Required]
+        public string Name { get; set; }
 
-        //public string CourseId { get; set; }
+
     }
 }

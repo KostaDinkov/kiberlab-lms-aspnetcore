@@ -25,8 +25,12 @@ namespace KiberlabLMS.Data
         protected override void OnModelCreating(ModelBuilder builder)
         {
             base.OnModelCreating(builder);
-
-
+            builder.Entity<Section>()
+                .Property(s => s.SectionType)
+                .HasConversion<string>();
+                //    t => t.ToString(),
+                //    t => (SectionType) Enum.Parse(typeof(SectionType), t)
+                //);
         }
 
         public override int SaveChanges() => this.SaveChanges(true);
