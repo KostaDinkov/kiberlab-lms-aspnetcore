@@ -6,16 +6,20 @@ using System.Threading.Tasks;
 using KiberlabLMS.Data;
 using KiberlabLMS.Models.CourseModels;
 using KiberlabLMS.ViewModels.Sections;
+using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Logging;
 
 namespace KiberlabLMS.Controllers
 {
     public class SectionsController : Controller
     {
         private readonly ApplicationDbContext context;
+        private readonly ILogger logger;
 
-        public SectionsController(ApplicationDbContext context)
+        public SectionsController(ApplicationDbContext context, ILogger<SectionsController> logger)
         {
             this.context = context;
+            this.logger = logger;
         }
 
         public IActionResult Create(string lessonId, SectionType sectionType)
@@ -44,6 +48,92 @@ namespace KiberlabLMS.Controllers
             }
 
             return this.RedirectToAction("Details", "Lessons", new {id = model.LessonId});
+        }
+
+        public IActionResult Details(string id)
+        {
+            var model = this.context.VideoSections
+                .Include(s => s.Lesson)
+                .FirstOrDefault(s => s.Id == id);
+
+            if (model == null) return this.NotFound();
+
+            switch (model.SectionType)
+            {
+                case SectionType.VideoSection:
+                    return this.View("VideoSectionDetails", model);
+            }
+
+            return this.NotFound();
+        }
+
+        public IActionResult Edit(string id, SectionType sectionType)
+        {
+            this.ViewData["sectionId"] = id;
+            switch (sectionType)
+            {
+                case SectionType.VideoSection:
+                    var model = this.context.VideoSections
+                        .Include(s => s.Lesson)
+                        .FirstOrDefault(s => s.Id == id);
+                    if (model == null) return this.NotFound();
+
+                    var viewModel = new VideoSectionViewModel()
+                    {
+                        Name = model.Name,
+                        Description = model.Description,
+                        SectionType = model.SectionType,
+                        Id = model.Id,
+                        LessonId = model.LessonId,
+                        VideoUrl = model.VideoUrl
+                    };
+                    return this.View("EditVideoSection",viewModel);
+            }
+
+            return this.NotFound();
+        }
+
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> EditVideoSection(string id, VideoSectionViewModel model)
+        {
+            this.logger.LogInformation(id);
+            if (id != model.Id)
+            {
+                return NotFound();
+            }
+
+            if (ModelState.IsValid)
+            {
+                try
+                {
+                    var section = this.context.VideoSections.FirstOrDefault(c => c.Id == id);
+                    model.LessonId = section.LessonId;
+                    section.Name = model.Name;
+                    section.Description = model.Description;
+                    section.VideoUrl = model.VideoUrl;
+                    section.Position = model.Position;
+
+                    context.Update(section);
+                    await context.SaveChangesAsync();
+                }
+                catch (DbUpdateConcurrencyException)
+                {
+                    if (!context.VideoSections.Any(c => c.Id == model.Id))
+                    {
+                        return NotFound();
+                    }
+                    else
+                    {
+                        throw;
+                    }
+                }
+
+                return RedirectToAction("Details", "Lessons", new {id = model.LessonId});
+            }
+
+            return this.NotFound();
         }
     }
 }

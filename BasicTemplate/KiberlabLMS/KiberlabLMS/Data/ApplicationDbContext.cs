@@ -11,6 +11,7 @@ using KiberlabLMS.Models.User;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 using KiberlabLMS.ViewModels.Lesson;
+using KiberlabLMS.ViewModels.Sections;
 
 namespace KiberlabLMS.Data
 {
@@ -94,5 +95,7 @@ namespace KiberlabLMS.Data
         public DbSet<UserProgress> UserProgresses { get; set; }
 
         public DbSet<KiberlabLMS.ViewModels.Lesson.LessonViewModel> LessonViewModel { get; set; }
+
+        public DbSet<KiberlabLMS.ViewModels.Sections.VideoSectionViewModel> VideoSectionViewModel { get; set; }
     }
 }

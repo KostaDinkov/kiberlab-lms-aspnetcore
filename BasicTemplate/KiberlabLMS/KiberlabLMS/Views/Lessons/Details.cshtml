@@ -49,9 +49,9 @@
 <div>
     <ul>
         
-        @foreach (var section in Model.Sections)
+        @foreach (var modelSection in Model.Sections)
         {
-        <a href="#"><li>@Html.DisplayFor(sectionItem => section.Name)</li></a>
+        <a asp-controller="Sections" asp-action="Details" asp-route-id="@modelSection.Id"><li>@Html.DisplayFor(sectionItem => modelSection.Name)</li></a>
         }
     </ul>
 </div>
