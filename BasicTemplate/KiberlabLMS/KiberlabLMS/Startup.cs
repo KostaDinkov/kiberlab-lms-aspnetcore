@@ -10,6 +10,7 @@ using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.EntityFrameworkCore;
 using KiberlabLMS.Data;
 using KiberlabLMS.Models.User;
+using Microsoft.AspNetCore.Mvc.Razor;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
@@ -35,8 +36,12 @@ namespace KiberlabLMS
                 .AddRoles<ApplicationRole>().AddEntityFrameworkStores<ApplicationDbContext>();
             services.AddControllersWithViews();
             services.AddRazorPages();
-            
-            
+            services.AddLocalization(options => options.ResourcesPath = "Resources");
+            services.AddMvc()
+                .AddViewLocalization(LanguageViewLocationExpanderFormat.Suffix)
+                .AddDataAnnotationsLocalization();
+
+
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

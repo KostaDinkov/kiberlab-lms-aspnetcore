@@ -97,5 +97,7 @@ namespace KiberlabLMS.Data
         public DbSet<KiberlabLMS.ViewModels.Lesson.LessonViewModel> LessonViewModel { get; set; }
 
         public DbSet<KiberlabLMS.ViewModels.Sections.VideoSectionViewModel> VideoSectionViewModel { get; set; }
+
+        public DbSet<KiberlabLMS.Models.CourseModels.Section> Section { get; set; }
     }
 }

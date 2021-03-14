@@ -4,7 +4,7 @@ using KiberlabLMS.Models.CourseModels;
 
 namespace KiberlabLMS.ViewModels.Sections
 {
-    public class VideoSectionViewModel:ISectionViewModel
+    public class VideoSectionViewModel
     {
         public string Id { get; set; }
 

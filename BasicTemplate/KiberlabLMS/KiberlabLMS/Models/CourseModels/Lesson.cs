@@ -10,7 +10,7 @@ namespace KiberlabLMS.Models.CourseModels
         {
             this.Sections = new HashSet<Section>();
         }
-
+        [Display(Name="Lesson Name")]
         [MaxLength(50)]
         public string Name { get; set; }
 

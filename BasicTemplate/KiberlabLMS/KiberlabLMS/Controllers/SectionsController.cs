@@ -93,6 +93,45 @@ namespace KiberlabLMS.Controllers
             return this.NotFound();
         }
 
+        public IActionResult Delete(string id, SectionType sectionType)
+        {
+            switch (sectionType)
+            {
+                case SectionType.VideoSection:
+                    var model = this.context.VideoSections.Include(s=>s.Lesson).FirstOrDefault(s => s.Id == id);
+                    var viewModel = new SectionViewModel()
+                    {
+                        Id = model.Id,
+                        Lesson = model.Lesson,
+                        LessonId = model.LessonId,
+                        Name = model.Name,
+                        Position = model.Position,
+                        SectionType = model.SectionType
+
+                    };
+                    return this.View(viewModel);
+                    
+            }
+
+            return this.NotFound();
+
+        }
+        [HttpPost]
+        public async Task<IActionResult> Delete(string id, SectionViewModel viewModel)
+        {
+            switch (viewModel.SectionType)
+            {
+                case SectionType.VideoSection:
+                    var section = await this.context.VideoSections.FirstOrDefaultAsync(s=>s.Id == id);
+                    this.context.VideoSections.Remove(section);
+                    await this.context.SaveChangesAsync();
+                    return this.RedirectToAction("Details", "Lessons", new {id = section.LessonId});
+
+            }
+
+            return this.NotFound();
+
+        }
 
         [HttpPost]
         [ValidateAntiForgeryToken]
