@@ -94,10 +94,6 @@ namespace KiberlabLMS.Data
 
         public DbSet<UserProgress> UserProgresses { get; set; }
 
-        public DbSet<KiberlabLMS.ViewModels.Lesson.LessonViewModel> LessonViewModel { get; set; }
-
-        public DbSet<KiberlabLMS.ViewModels.Sections.VideoSectionViewModel> VideoSectionViewModel { get; set; }
-
-        public DbSet<KiberlabLMS.Models.CourseModels.Section> Section { get; set; }
+        
     }
 }

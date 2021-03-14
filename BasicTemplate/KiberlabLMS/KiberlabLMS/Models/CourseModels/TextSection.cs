@@ -9,6 +9,6 @@ namespace KiberlabLMS.Models.CourseModels
             this.SectionType = SectionType.TextSection;
         }
         [Required]
-        public string HtmlString { get; set; }
+        public string Markdown { get; set; }
     }
 }
