@@ -1,6 +1,7 @@
 ﻿@using KiberlabLMS.Models.CourseModels
+@using Microsoft.AspNetCore.Mvc.Localization
 @model KiberlabLMS.Models.CourseModels.Lesson
-
+@inject IViewLocalizer Localizer
 <div>
     <h4>Lesson</h4>
     <hr />
@@ -44,14 +45,24 @@
         </dd>
     </dl>
 </div>
-<a asp-controller="Sections" asp-action="Create" asp-route-lessonId="@Model.Id" asp-route-sectionType="@SectionType.VideoSection">Create New</a>
 
+<div class="dropdown">
+    <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        @Localizer["Create New Section"]
+    </button>
+    <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+        <a class="dropdown-item" asp-controller="Sections" asp-action="Create" asp-route-lessonId="@Model.Id" asp-route-sectionType="@SectionType.VideoSection">Video Section</a>
+        <a class="dropdown-item" href="#">Text Section</a>
+        <a class="dropdown-item" href="#">Quiz Section</a>
+        <a class="dropdown-item" href="#">Lab Section</a>
+    </div>
+</div>
 <div>
     <ul>
         
         @foreach (var modelSection in Model.Sections)
         {
-        <a asp-controller="Sections" asp-action="Details" asp-route-id="@modelSection.Id"><li>@Html.DisplayFor(sectionItem => modelSection.Name)</li></a>
+        <li><a asp-controller="Sections" asp-action="Details" asp-route-id="@modelSection.Id">@Html.DisplayFor(sectionItem => modelSection.Name)</a></li>
         }
     </ul>
 </div>
